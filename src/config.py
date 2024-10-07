@@ -1,4 +1,4 @@
-from typing import Type, Sequence
+from typing import Sequence, Type
 
 from fastapi.middleware import Middleware
 from fastapi.responses import ORJSONResponse, Response

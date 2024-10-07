@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
-from src.users import users_router
 from src.config import settings
+from src.users import users_router
 
 app = FastAPI(
     debug=settings.app_settings.DEBUG,

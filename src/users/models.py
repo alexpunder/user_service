@@ -3,7 +3,6 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 from src.constants import DB_NAMING_CONVENTION
 
-
 metadata = MetaData(
     naming_convention=DB_NAMING_CONVENTION,
 )
