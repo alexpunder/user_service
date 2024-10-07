@@ -4,18 +4,18 @@ from src.users import users_router
 from src.config import settings
 
 app = FastAPI(
-    debug=settings.app_settings.debug,
-    title=settings.app_settings.title,
-    summary=settings.app_settings.summary,
-    description=settings.app_settings.description,
-    version=settings.app_settings.version,
-    docs_url=settings.app_settings.docs_url,
-    redoc_url=settings.app_settings.redoc_url,
-    default_response_class=settings.app_settings.default_response_class,
-    middleware=settings.app_settings.middleware,
-    terms_of_service=settings.app_settings.terms_of_service,
-    contact=settings.app_settings.contact,
-    license_info=settings.app_settings.license_info,
+    debug=settings.app_settings.DEBUG,
+    title=settings.app_settings.TITLE,
+    summary=settings.app_settings.SUMMARY,
+    description=settings.app_settings.DESCRIPTION,
+    version=settings.app_settings.VERSION,
+    docs_url=settings.app_settings.DOCS_URL,
+    redoc_url=settings.app_settings.REDOC_URL,
+    default_response_class=settings.app_settings.DEFAULT_RESPONSE_CLASS,
+    middleware=settings.app_settings.MIDDLEWARE,
+    terms_of_service=settings.app_settings.TERMS_OF_SERVICE,
+    contact=settings.app_settings.CONTACT,
+    license_info=settings.app_settings.LICENSE_INFO,
 )
 
 app.include_router(

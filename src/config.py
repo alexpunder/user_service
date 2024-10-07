@@ -16,24 +16,24 @@ class ExtendBaseSettings(BaseSettings):
 class AppSettings(ExtendBaseSettings):
     model_config = SettingsConfigDict(env_prefix='APP_')
 
-    debug: bool = True
-    title: str = 'User service'
-    summary: str = ''
-    description: str | None = 'Microservice'
-    version: str = '0.0.1'
-    docs_url: str = '/'
-    redoc_url: str = '/redoc'
-    default_response_class: Type[Response] = ORJSONResponse
-    middleware: Sequence[Middleware] = middleware
-    terms_of_service: str | None = None
-    contact: dict = {}
-    license_info: dict = {}
+    DEBUG: bool = True
+    TITLE: str = 'User service'
+    SUMMARY: str = ''
+    DESCRIPTION: str | None = 'Microservice'
+    VERSION: str = '0.0.1'
+    DOCS_URL: str = '/'
+    REDOC_URL: str = '/redoc'
+    DEFAULT_RESPONSE_CLASS: Type[Response] = ORJSONResponse
+    MIDDLEWARE: Sequence[Middleware] = middleware
+    TERMS_OF_SERVICE: str | None = None
+    CONTACT: dict = {}
+    LICENSE_INFO: dict = {}
 
 
 class DBSettings(ExtendBaseSettings):
     model_config = SettingsConfigDict(env_prefix='DB_')
 
-    dsn: str = 'sqlite+aiosqlite:///./user.db'
+    DSN: str = 'sqlite+aiosqlite:///./user.db'
 
 
 class Settings(ExtendBaseSettings):
