@@ -17,6 +17,7 @@ class AppSettings(ExtendBaseSettings):
     model_config = SettingsConfigDict(env_prefix='APP_')
 
     DEBUG: bool = True
+    LOG_LEVEL: str = 'INFO'
     TITLE: str = 'User service'
     SUMMARY: str = ''
     DESCRIPTION: str | None = 'Microservice'
@@ -36,9 +37,15 @@ class DBSettings(ExtendBaseSettings):
     DSN: str = 'sqlite+aiosqlite:///./user.db'
 
 
+class KafkaSettings(ExtendBaseSettings):
+    BOOTSTRAP_SERVERS: str = 'localhost:9092'
+    TOPIC_NAME: str = 'user_data'
+
+
 class Settings(ExtendBaseSettings):
     app_settings: AppSettings = AppSettings()
     db_settings: DBSettings = DBSettings()
+    kafka_settings: KafkaSettings = KafkaSettings()
 
 
 settings = Settings()

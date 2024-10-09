@@ -18,6 +18,9 @@ aiosqlite = "^0.20.0"
 orjson = "^3.10.7"
 uvicorn = "^0.31.0"
 pydantic-extra-types = "^2.9.0"
+aiokafka = "^0.11.0"
+phonenumbers = "^8.13.47"
+pydantic = {extras = ["email"], version = "^2.9.2"}
 
 
 [build-system]
