@@ -10,11 +10,6 @@ from src.users.service import producer
 router = APIRouter(prefix='/users', tags=['Users'])
 
 
-@router.get('/')
-async def get_test_user_data():
-    return {'name': 'test', 'surname': 'testovich'}
-
-
 @router.post('/', response_model=BaseUser)
 async def test_kafka_send_topik(
     user_data: BaseUser,
@@ -23,7 +18,7 @@ async def test_kafka_send_topik(
 
     try:
         logging.info(f'Sending data to Kafka: {some_data=}')
-        await producer.send(
+        await producer.send_and_wait(
             topic=settings.kafka_settings.TOPIC_NAME, value=some_data
         )
         logging.info('Message send to Kafka')

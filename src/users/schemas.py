@@ -8,9 +8,10 @@ class MyPhone(PhoneNumber):
 
 class BaseUser(BaseModel):
     name: str
-    surname: str
+    surname: str | None
     email: EmailStr
-    phone: MyPhone
+    phone_number: MyPhone
+    avatar: str | None
 
 
 class UserBD(BaseUser):

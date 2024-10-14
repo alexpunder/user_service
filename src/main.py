@@ -7,7 +7,8 @@ from fastapi import FastAPI
 
 from src.config import settings
 from src.users import users_router
-from src.users.service import producer
+from src.users.service import producer, consumer, loop, test_kafka_get_messages
+
 
 LOG_LEVEL: str = settings.app_settings.LOG_LEVEL or 'INFO'
 
@@ -21,14 +22,19 @@ logging.basicConfig(
 async def lifespan(app: FastAPI):
     try:
         await producer.start()
+        await consumer.start()
+        loop.create_task(test_kafka_get_messages())
         logging.info('Kafka is running!')
     except KafkaConnectionError as error:
         logging.exception(f'Error starting Kafka producer: {error}')
+    except Exception as error:
+        logging.exception(f'Another error from starting service: {error}')
 
     yield
 
     await producer.stop()
-    await asyncio.sleep(3)
+    await consumer.stop()
+    await asyncio.sleep(1)
 
 
 app = FastAPI(
